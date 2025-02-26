@@ -1,0 +1,123 @@
+<!--  Create a simple image gallery using HTML, CSS, and JavaScript. It displays a set of
+images, and users can click on an image to view it in a larger size and able to close
+the popup.
+ -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Image Gallery</title>
+
+
+    <!-- tailwind css connection link -->
+    <!-- Tailwind CSS cdn link from jsdeliver.com -->
+
+    <script src="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/lib/index.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+    <style>
+        img {
+            height: 20%;
+            width: 20%;
+        }
+
+        img:hover {
+            opacity: 0.4;
+            transition: 1s;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- img backgroud when click it -->
+    <div class="bg-black opacity-90 
+        z-10 fixed h-full 
+        w-full top-0 hidden" id="img_bg">
+        <!-- close -->
+        <p class="text-yellow-300 text-4xl
+            font-extrabold text-right p-9 z-15
+            cursor-pointer sticky top-0" id="close_img">X</p>
+    </div>
+    <!-- The art gallery -->
+    <div class="flex justify-around items-center m-5 p-5">
+        <div class="text-4xl m-5 font-extrabold md:text-7xl text-center"><span class="text-blue-800">O</span>
+            <span class="text-yellow-500">n</span>
+            <span class="text-green-500">l</span>
+            <span class="text-red-500">i</span>
+            <span class="text-pink-500">n</span>
+            <span class="text-blue-300">e </span>
+            <span class="text-blue-800">A</span>
+            <span class="text-orange-500">r</span>
+            <span class="text-gray-600">t</span>
+            <span class="text-pink-700">G</span>
+            <span class="text-blue-400">a</span>
+            <span class="text-yellow-500">l</span>
+            <span class="text-red-500">l</span>
+            <span class="text-yellow-300">e</span>
+            <span class="text-emerald-300">r</span>
+            <span class="text-violet-500">y</span>
+        </div>
+        <img src="./images/logo.png" class="w-32">
+    </div>
+
+    <div>
+        <!-- image container -->
+        <section class="flex 
+             flex-wrap justify-around 
+             items-center gap-10" id="img_container">
+            <img src="./images/img1.jpg">
+            <img src="./images/img2.jpg">
+            <img src="./images/img3.jpg">
+            <img src="./images/img4.jpg">
+            <img src="./images/img5.jpg">
+            <img src="./images/img6.jpg">
+            <img src="./images/img7.jpg">
+            <img src="./images/img8.jpg">
+            <img src="./images/img9.jpg">
+            <img src="./images/img10.jpg">
+            <img src="./images/img11.jpg">
+            <img src="./images/img12.jpg">
+            <img src="./images/img13.jpg">
+            <img src="./images/img14.jpg">
+            <img src="./images/img15.jpg">
+            <img src="./images/img16.jpg">
+            <img src="./images/img17.jpg">
+            <img src="./images/img18.jpg">
+            <img src="./images/img19.jpg">
+            <img src="./images/img20.jpg">
+        </section>
+    </div>
+
+</body>
+<script>
+    var clickedImg;
+    // selecting elemetns
+    var img_container = document.getElementById("img_container")
+    var close_tab = document.getElementById("close_img")
+    var img_bg = document.getElementById("img_bg")
+    // get the all images from thier container
+    var imgs = img_container.querySelectorAll("img")
+    // console.log(imgs[0])
+    for (var i = 0; i < imgs.length; i++) {
+        imgs[i].addEventListener("click", function (event) {
+            img_bg.style.display = "block"
+            event.target.style.width = "400px"
+            event.target.style.zIndex = "50"
+            // imgs[i].style.display=block
+            clickedImg = event.target
+            // console.log(clickedImg)
+
+        })
+
+
+    }
+    // close button
+
+    close_tab.addEventListener("click", function (event) {
+        img_bg.style.display = "none"
+        clickedImg.style.width = "196px"
+    })
+
+</script>
+
+</html>
